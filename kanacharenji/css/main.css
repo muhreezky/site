@@ -1,0 +1,227 @@
+@font-face{
+	font-family: "Irohamaru";
+	src: url("../irohamaru-mikami-Medium.woff") format("woff");
+}
+
+@keyframes showIfHiScore{
+	from{
+		background-color: #FF4C00;
+		color: #FFFF00;
+	}
+	to{
+		background-color: #FFFF00;
+		color: #FF4C00;
+	}
+}
+
+@-webkit-keyframes showIfHiScore{
+	from{
+		background-color: #FF4C00;
+		color: #FFFF00;
+	}
+	to{
+		background-color: #FFFF00;
+		color: #FF4C00;
+	}
+}
+
+@-moz-keyframes showIfHiScore{
+	from{
+		background-color: #FF4C00;
+		color: #FFFF00;
+	}
+	to{
+		background-color: #FFFF00;
+		color: #FF4C00;
+	}
+}
+
+body:not(.dialog){
+	text-align: center;
+}
+
+body{
+	background-color: #FFFFFF;
+	cursor: default;
+}
+
+.buyButton{
+	letter-spacing: 0px;
+}
+
+*[onclick="multiply();"]{
+	display: none;
+}
+
+*{
+	font-family: "Irohamaru";
+	transition: all 300ms ease;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	letter-spacing: 2px;
+}
+
+
+#title, fieldset{
+	text-align: center;
+}
+
+input{
+	border: 1px solid #000000;
+}
+
+input[type="button"], input[type="submit"], button{
+	background-color: #3EE3EC;
+	border: 2px solid #808080;
+	border-radius: 20px;
+}
+
+.locked, .locked:hover, .locked:active{
+	background-color: #909090;
+	border: 2px solid #FFFFFF;
+	border-radius: 20px;
+	cursor: not-allowed;
+	color: #000000;
+	letter-spacing: inherit;
+	box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+input[type="text"]{
+	background-color: #C0C0C0;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, button:hover{
+	background-color: #00F100;
+	color: #FFFFFF;
+	cursor: pointer;
+	letter-spacing: 0.5px;
+}
+
+input[type="button"]:active, input[type="submit"]:active, button:active{
+	border: 3px solid #FFFFFF;
+	background-color:  #00A100;
+	box-shadow: 3px 3px 3px 3px #000000;
+}
+
+a{
+	color: #AFF0F0;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #C0C0C0;
+	text-decoration: underline;
+}
+
+table{
+	width: 100%;
+	border: 1px solid #000000;
+}
+
+a[href*="/create.php"], a.questions{
+	background-color: #8096F0;
+	color: #FFFFFF;
+	display: inline-table;
+	width: 87%;
+}
+
+#charBar{
+	color: #000000;
+	background-color: #ece1b7;
+	font-size: 200%;
+}
+
+#choice1, #choice2, #choice3, #choice4{
+	background-color: #c0c0c0;
+	color: #000000;
+	display: block;
+	width: 80%;
+}
+
+#choice1:active, #choice2:active, #choice3:active, #choice4:active{
+	background-color: #4de820;
+	color: #FFFFFF;
+}
+
+table{
+	width: 100%;	
+}
+
+.choices{
+	border: 0px solid #000000;
+}
+
+#showIfHiScore{
+	background-color: #FF4C00;
+	color: #FFFF00;
+	display: none;
+	border-radius: 20px;
+	animation: showIfHiScore 1s infinite;
+	-webkit-animation: showIfHiScore 1s infinite;
+	-moz-animation: showIfHiScore 1s infinite;
+}
+
+/* Media Queries */
+@media (orientation: portrait){
+	body{
+		font-size: 2.5vh;
+	}
+	.titlebar{
+		font-size: 8vh;
+	}
+	input[type="button"], input[type="submit"], button{
+		font-size: 3vh;
+		border-bottom: 1vh solid rgb(120, 120, 120);
+	}
+	input[type="text"]{
+		font-size: 2.25vh;
+	}
+	.mainmenu.button{
+		font-size: 5vh;
+		border-radius: 3vh;
+	}
+	input[type='checkbox']{
+		
+	}
+	#choice1, #choice2, #choice3, #choice4{
+		font-size: 4.25vh;
+	}
+	#appLogo{
+		width: 15vh;
+		height: 15vh;
+	}
+	#showIfHiScore{
+	  font-size: 2vh;
+	}
+}
+
+@media (orientation: landscape){
+	body{
+		font-size: 2.5vw;
+	}
+	.titlebar{
+		font-size: 8vw;
+	}
+	input[type="button"], input[type="submit"], button{
+		font-size: 3vw;
+		border-bottom: 1vw solid rgb(120, 120, 120);
+	}
+	.mainmenu.button{
+		font-size: 5vw;
+		border-radius: 3vw;
+	}
+	input[type="text"]{
+		font-size: 2.25vw;
+	}
+	#choice1, #choice2, #choice3, #choice4{
+		font-size: 4.25vw;
+	}
+	#appLogo{
+		width: 15vw;
+		height: 15vw;
+	}
+	#showIfHiScore{
+	  	font-size: 2vw;
+	}
+}
+/* End of Media Queries, don't enter any code after this line!!! */

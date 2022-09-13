@@ -1,0 +1,109 @@
+@keyframes showDlg{
+	from{
+		opacity: 0;
+		top: 0%;
+	}
+	to{
+		opacity: 1;
+		top: 10%;
+	}
+}
+
+@-webkit-keyframes showDlg{
+	from{
+		opacity: 0;
+		top: 0%;
+	}
+	to{
+		opacity: 1;
+		top: 10%;
+	}
+}
+
+@-moz-keyframes showDlg{
+	from{
+		opacity: 0;
+		top: 0%;
+	}
+	to{
+		opacity: 1;
+		top: 10%;
+	}
+}
+
+.dialogBg{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	overflow: auto;
+	display: none;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.dialog{
+	display: none;
+	position: fixed;
+	top: 10%;
+	margin-left: 4.5%;
+	width: 90%;
+	border: 2px solid #000000;
+	-webkit-animation: showDlg 1.25s 1;
+	-moz-animation: showDlg 1.25s 1;
+	animation: showDlg 1.25s 1;
+	z-index: 1;
+}
+
+.dialogHead{
+	background-color: #2f41df;
+	font-weight: bolder;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.dialogBody{
+	background-color: #FFFFA1;
+	color: #ffffff;
+	text-align: left;
+	padding: 5% 5% 5% 5%;
+}
+
+.dialogFoot{
+	background-color: #60fb39;
+}
+
+.exitDlg{
+	background-color: #FF0000;
+	color: #FFFFFF;
+	float: right;
+}
+
+.exitDlg:hover{
+	cursor: pointer;
+}
+
+@media(orientation: landscape){
+	.dialogHead{
+		font-size: 3.25vw;
+	}
+	.dialogBody{
+		font-size: 2.5vw;
+	}
+	.dialogFoot{
+		font-size: 2.25vw;
+	}
+}
+
+@media(orientation: portrait){
+	.dialogHead{
+		font-size: 3.25vh;
+	}
+	.dialogBody{
+		font-size: 2.5vh;
+	}
+	.dialogFoot{
+		font-size: 2.25vh;
+	}
+}

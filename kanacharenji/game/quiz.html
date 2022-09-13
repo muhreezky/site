@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kana Quiz</title>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../js/quiz.js"></script>
+<script type="text/javascript" src="../js/dialog.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/dialog.css">
+<link rel="stylesheet" type="text/css" href="../css/fork-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+<meta charset="UTF-8">
+</head>
+<body>
+	<style>
+		@media(orientation: portrait){
+			.bar{
+				font-size: 3.25vh;
+			}
+			.mainBar{
+				font-size: 3vh;
+			}
+			.mainBar button, .mainBar input[type="button"]{
+				font-size: 3vh;
+				display: block;
+			}
+			#dialog1 .dialogBody{
+				font-size: 3.3vh;
+			}
+		}
+		@media(orientation: landscape){
+			.bar{
+				font-size: 3.25vw;
+			}
+			.mainBar{
+				font-size: 3vw;
+			}
+			.mainBar button, .mainBar input[type="button"]{
+				font-size: 2.25vw;
+			}
+			#dialog1 .dialogBody{
+				font-size: 3.3vw;
+			}
+		}
+		.clock, .score, #question, #answerBar{
+			font-weight: bolder;
+			border: 2px solid #000000;
+			width: auto;
+			border-radius: 20px;
+		}
+		.mainBar button, .mainBar input[type="button"]{
+			width: 100%;
+		}
+		#dialog1 .dialogBody{
+			color: #000000;
+			text-align: center;
+		}
+		#dialog1 .dialogBody button{
+			width: 40%;
+		}
+	</style>
+	<div id="dialogBg1" class="dialogBg">
+		<div id="dialog1" class="dialog">
+			<div class="dialogHead">
+				Game Result
+			</div>
+			<div class="dialogBody">
+				<i class='fa fa-plus'></i>&nbsp;<i class="fa fa-coins"></i>&nbsp;<span id="myScore">0</span><br>
+				<i class="fa fa-trophy"></i>&nbsp;<span id="myHighScore">0</span><br><br>
+				<button onclick='document.location.href="./quiz.html";'>
+					&nbsp;&nbsp;&nbsp;<i class="fa fa-refresh"></i>&nbsp;&nbsp;&nbsp;
+				</button>
+				<button onclick='document.location.href="../index.html";'>
+					&nbsp;&nbsp;&nbsp;<i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="bar">
+		<span class="clock">
+			&nbsp;<i class="far fa-clock"></i>&nbsp;<span id="time">5</span>&nbsp;
+		</span>&nbsp; &nbsp;
+		<span class="score">
+			&nbsp;<i class="fa fa-money"></i>&nbsp;<span id="coins">0</span>&nbsp;
+		</span>
+	</div><br>
+	<div class="mainBar">
+		<span id="question">
+			&nbsp;&nbsp;
+		</span>
+		&nbsp;=
+		<span id="answerBar">
+			&nbsp;<i class="fa fa-question-circle"></i>&nbsp;
+		</span><br><br>
+		<input type="button" value="A" id="answer1" onclick='correction(this.value);'><br>
+		<input type="button" value="B" id="answer2" onclick='correction(this.value);'><br>
+		<input type="button" value="C" id="answer3" onclick='correction(this.value);'><br>
+		<input type="button" value="D" id="answer4" onclick='correction(this.value);'>
+	</div>
+</body>
+</html>

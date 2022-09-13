@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kana Challenge by ムーリズキ</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/dialog.css">
+<link rel="stylesheet" type="text/css" href="css/fork-awesome.min.css">
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/dialog.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+</head>
+<body>
+<div id="dialogBg1" class="dialogBg"></div>
+<div id="dialog1" class="dialog">
+	<div class="dialogHead">
+		Game Mode
+		<span class="exitDlg" onclick="exitDlg('1');">&nbsp; &times; &nbsp;</span>
+	</div>
+	<div class="dialogBody">
+		<button onclick='document.location.href = "game/quiz.html";'>Quiz</button><br><br>
+		<button class="locked" id="trueorfalse">True or False <i class="fa fa-lock" id="locked1"></i></button><button id="buyTrueOrFalse" class="buyButton" onclick="buyStage(1, 100);"><i class="fa fa-money"></i> 100</button>
+		<button class="locked" id="memorygame">Memory Game <i class="fa fa-lock" id="locked2"></i></button><button id="buyMemoryGame" class="buyButton" onclick="buyStage(2, 300);"><i class="fa fa-money"></i> 300</button>
+	</div>
+</div>
+<button class="mainmenu button" onclick='showDialog("1");'><i class="fa fa-play"></i><br>プレイ</button>
+<button class="mainmenu button" onclick='document.location.href="./help.html";'><i class="fa fa-question"></i><br>ヘルプ</button>
+<br><br>
+<table class="statusbar">
+	<tr>
+		<td width="33%">
+			<i class="fa fa-money"></i>&nbsp;<span id="money">0</span>
+		</td>
+	</tr>
+</table>
+<style>
+	#dialog1 .dialogBody button, #dialog3 .dialogBody button{
+		width: 100%;
+	}
+	#dialog1 .dialogBody .buyButton, #dialog3 .dialogBody .buyButton{
+		width: 15%;
+		float: right;
+		background-color: #00FF00;
+	}
+	#dialog1 .dialogBody button.locked{
+		width: 80%;
+	}
+	@media(orientation: landscape){
+		#dialog1 .dialogBody .buyButton{
+			
+		}
+	}
+	@media(orientation: portrait){
+		#dialog1 .dialogBody .buyButton{
+			font-size: 1.5vh;
+		}
+	}
+	table{
+		border: 3px solid #000000;
+		border-radius: 20px;
+	}
+	#memorygame, #buyMemoryGame{
+		display: none;
+	}
+</style>
+<script>
+	var dialogText = $("#dialog1 .dialogBody").innerHTML;
+	window.onload = function(){
+		if(localStorage.getItem(pk + ".money") == null){
+			localStorage.setItem(pk + ".money", "0");
+		}
+		$("#money").textContent = localStorage.getItem(pk + ".money");
+	};
+	if(stages.trueOrFalse == 1){
+		var locked1 = $("#locked1");
+		var buyTOF = $("#buyTrueOrFalse");
+		$("#trueorfalse").className = "";
+		locked1.parentNode.removeChild(locked1);
+		buyTOF.parentNode.removeChild(buyTOF);
+		$("#trueorfalse").onclick = function(){
+			document.location.href = "game/trueorfalse.html";
+		};
+	}
+	if(stages.memoryGame == 1){
+		var locked2 = $("#locked2");
+		var buyMG = $("#buyMemoryGame");
+		$("#memorygame").className = "";
+		$("#locked2").parentNode.removeChild(locked2);
+		buyMG.parentNode.removeChild(buyMG);
+		$("#memorygame").onclick = function(){
+			document.location.href = "game/memorygame.html";
+		}
+	}
+</script>
+</body>
+</html>

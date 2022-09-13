@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Help - Kana Charenji</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/dialog.css">
+<link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+<script type="text/javascript" src="fontawesome/js/all.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/dialog.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+</head>
+<body>
+<style>
+	*{
+		transition: all 750ms ease;
+	}
+	a{
+		color: #FF007F;
+	}
+	a:hover{
+		color: #0000FF;
+		cursor: pointer;
+	}
+	.dialog .dialogBody{
+		text-align: center;
+		color: #000000;
+	}
+	.kanaButton{
+		border: 1px solid #000000;
+		background-color: #FFFFFF;
+	}
+	@media(orientation: portrait){
+		.kanaButton{
+			font-size: 7vh;
+		}
+	}
+	@media(orientation: landscape){
+		.kanaButton{
+			font-size: 7vw;
+		}
+	}
+</style>
+<script>
+    var katakana = kata.split("");
+    var hiragana = hira.split("");
+    var romaji = roma.split(" ");
+	var index = 0;
+	function decreaseIndex(){
+		var ind = index;
+		if(ind == 0){
+			ind = 0;
+		}
+		else{
+			ind = ind - 1;
+		}
+		index = ind;
+		return index;
+	}
+</script>
+<input type="button" value="&larr;" onclick='document.location.href="./index.html";'><br><br>
+<h1 style='text-align: center;'>Kana Charenji</h1>
+<div id="dialogBg1" class="dialogBg"></div>
+<div id="dialog1" class="dialog">
+	<div class="dialogHead">
+		Summary
+		<span class="exitDlg" onclick='exitDlg("1"); window.onkeydown = null;'>&nbsp; &times; &nbsp;</span>
+	</div>
+	<div class="dialogBody">
+		<span class="kanaButton">&nbsp;  &nbsp;</span><br><br>
+		<button onclick="decreaseIndex(); changeHelp(index);">&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</button>
+		<button onclick="increaseIndex(); changeHelp(index);">&nbsp;<i class="fas fa-arrow-right"></i>&nbsp;</button>
+	</div>
+</div>
+<script>
+	function increaseIndex(){
+		var ind = index;
+		if(ind == katakana.length - 1){
+			ind = katakana.length - 1;
+		}
+		else{
+			ind = ind + 1;
+		}
+		index = ind;
+		return index;
+	}
+	function changeHelp(idx){
+		$(".kanaButton").innerHTML = "&nbsp; " + hiragana[idx] + ", " + katakana[idx] + ", " + romaji[idx] + " &nbsp;";
+	}
+	function displayHelp(){
+		showDialog("1");
+    	window.onkeydown = function(key){
+    		if(key.keyCode == 37){
+    			decreaseIndex();
+    		}
+    		else if(key.keyCode == 39){
+    			increaseIndex();
+    		}
+    		changeHelp(index);
+    	};
+	}
+	window.onload = changeHelp(0);
+</script>
+<div style='text-align: left; word-wrap: break-word;'>
+	Kana Charenji adalah game untuk melatih kemampuanmu dalam memahami huruf-huruf Kana (Hiragana dan Katakana).
+	Dalam game ini, ada beberapa mode permainan yang dapat anda mainkan. Pada mode-mode tersebut, anda harus bisa menyelesaikan
+	tantangan yang diberikan dengan cepat dan benar. Jika tidak, permainan akan berakhir.<br><br>
+	<a onclick="displayHelp();">Ingin mengenal huruf Kana?</a>
+</div>
+</body>
+</html>

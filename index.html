@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MuhReezky's Personal Page</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/fork-awesome.min.css">
+	<link rel="stylesheet" href="css/w3.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="offcanvas offcanvas-end" id="sidebar">
+		<header class="offcanvas-header">
+			<span class="h1 offcanvas-title w-100">Menu</span>
+			<button class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+		</header>
+		<div class="offcanvas-body">
+			<span class="d-grid gap-3 h1">
+				<h3 class="m-3">Apps</h3>
+				<a class="btn btn-block btn-dark" href="https://www.wrote.my.id" target="_blank">Wrote Note</a>
+				<a class="btn btn-block btn-dark" href="./kanacharenji/index.html">Kana Charenji</a>
+			</span>
+		</div>
+	</div>
+	<header class="container-fluid text-white bg-primary p-4">
+		<span class="h2 float-end"><a href='#' class="btn btn-primary fa fa-bars" data-bs-toggle="offcanvas" data-bs-target="#sidebar"></a></span>&nbsp;
+		<span class="h1">MuhReezky Studio</span>
+	</header>
+	<div class="mx-auto container-fluid p-4" style="text-align: center">
+		<span class="display-3">Apps 4 Hobby</span><br><br>
+		<div class="d-flex flex-wrap m-5">
+			<div onclick="document.location.href = 'kanacharenji/index.html';" class="card w3-hover-black" style="cursor:pointer">
+				<img class="card-img-top" style='height: 80%;' src="img/screenshot-1.png" alt="Kana Charenji">
+				<div class="card-body">
+					<h3>Kana Charenji</h3>
+				</div>
+			</div>
+			&nbsp;
+			<div onclick="document.location.href = 'https://wrote.my.id';" class="card w3-hover-black" style="cursor:pointer">
+				<img class="card-img-top" style='height: 80%;' src="img/screenshot-2.png" alt="Wrote Note">
+				<div class="card-body">
+					<h3>Wrote Note</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer style="margin: auto; left: 0; bottom: 0; width: 100%;" class="p-4 container-fluid bg-dark text-white">
+		&copy; Copyright 2022 MuhReezky Studio<br>
+		<i class="fa fa-instagram"></i> <a class="text-white" href="https://instagram.com/muh.reezky">@muh.reezky</a>
+	</footer>
+</body>
+</html>
