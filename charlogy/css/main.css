@@ -1,0 +1,231 @@
+@font-face{
+	font-family: "Ubuntu";
+	src: url("../Ubuntu-R.ttf");
+}
+
+@keyframes showIfHiScore{
+	from{
+		background-color: #FF4C00;
+		color: #FFFF00;
+	}
+	to{
+		background-color: #FFFF00;
+		color: #FF4C00;
+	}
+}
+
+@-webkit-keyframes showIfHiScore{
+	from{
+		background-color: #FF4C00;
+		color: #FFFF00;
+	}
+	to{
+		background-color: #FFFF00;
+		color: #FF4C00;
+	}
+}
+
+@-moz-keyframes showIfHiScore{
+	from{
+		background-color: #FF4C00;
+		color: #FFFF00;
+	}
+	to{
+		background-color: #FFFF00;
+		color: #FF4C00;
+	}
+}
+
+body:not(.dialog){
+	text-align: center;
+}
+
+body{
+	background-color: #00A1FF;
+	cursor: default;
+}
+
+*[onclick="multiply();"]{
+	display: none;
+}
+
+*{
+	font-family: "Ubuntu";
+	transition: all 300ms ease;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	letter-spacing: 2px;
+}
+
+
+#title, fieldset{
+	text-align: center;
+}
+
+input{
+	border: 1px solid #000000;
+}
+
+input[type="button"], input[type="submit"], button{
+	background-color: #3EE3EC;
+	padding: 0 2% 0 2%;
+}
+
+input[type="text"]{
+	background-color: #C0C0C0;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, button:hover{
+	background-color: #A556C2;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, button:hover{
+	letter-spacing: 0.5px;
+}
+
+input[type="button"]:active, input[type="submit"]:active, button:active{
+	border: 3px solid #FFFFFF;
+}
+
+a{
+	color: #AFF0F0;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #C0C0C0;
+	text-decoration: underline;
+}
+
+table{
+	width: 100%;
+	border: 1px solid #000000;
+}
+
+a[href*="/create.php"], a.questions{
+	background-color: #8096F0;
+	color: #FFFFFF;
+	display: inline-table;
+	width: 87%;
+}
+
+a[href*="/create.php?project=."], a[href*="/delete.php?name=."], a[onclick*="."]{
+	display: none;
+}
+
+a[href*="/delete.php"], a.delete{
+	background-color: #FF0000;
+	color: #FFFFFF;
+	float: right;
+}
+
+a[href*="/delete.php"]:hover, a.delete:hover{
+	background-color: #FF6C6C;
+}
+
+a[href*="/create.php"]:hover, a.questions:hover{
+	cursor: pointer;
+	background-color: #2DE3E3;
+	color: #000000;
+}
+
+#charBar{
+	color: #000000;
+	background-color: #ece1b7;
+	font-size: 200%;
+}
+
+#choice1, #choice2, #choice3, #choice4{
+	background-color: #c0c0c0;
+	color: #000000;
+	display: block;
+	width: 80%;
+}
+
+#choice1:active, #choice2:active, #choice3:active, #choice4:active{
+	background-color: #4de820;
+	color: #FFFFFF;
+}
+
+table{
+	width: 100%;	
+}
+
+.choices{
+	border: 0px solid #000000;
+}
+
+#showIfHiScore{
+	background-color: #FF4C00;
+	color: #FFFF00;
+	display: none;
+	border-radius: 20px;
+	animation: showIfHiScore 1s infinite;
+	-webkit-animation: showIfHiScore 1s infinite;
+	-moz-animation: showIfHiScore 1s infinite;
+}
+
+/* Media Queries */
+@media (orientation: portrait){
+	body{
+		font-size: 2.5vh;
+	}
+	.titlebar{
+		font-size: 8vh;
+	}
+	input[type="button"], input[type="submit"], button{
+		font-size: 3vh;
+	}
+	input[type="text"]{
+		font-size: 2.25vh;
+	}
+	.mainmenu.button{
+		font-size: 6vh;
+		border-radius: 3vh;
+	}
+	input[type='checkbox']{
+		size: 2vh;
+	}
+	#choice1, #choice2, #choice3, #choice4{
+		font-size: 4.25vh;
+	}
+	#appLogo{
+		width: 15vh;
+		height: 15vh;
+	}
+	#showIfHiScore{
+	  font-size: 2vh;
+	}
+}
+
+@media (orientation: landscape){
+	body{
+		font-size: 2.5vw;
+	}
+	.titlebar{
+		font-size: 8vw;
+	}
+	input[type="button"], input[type="submit"], button{
+		font-size: 3vw;
+	}
+	.mainmenu.button{
+		font-size: 6vw;
+		border-radius: 3vw;
+	}
+	input[type="text"]{
+		font-size: 2.25vw;
+	}
+	#choice1, #choice2, #choice3, #choice4{
+		font-size: 4.25vw;
+	}
+	#appLogo{
+		width: 15vw;
+		height: 15vw;
+	}
+	#showIfHiScore{
+	  font-size: 2vw;
+	}
+}
+/* End of Media Queries, don't enter any code after this line!!! */

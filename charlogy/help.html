@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Help</title>
+<script src="js/main.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/dialog.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+</head>
+<body style='text-align: left;'>
+<script async>
+
+function charToAscii(){
+	var ascii = $('#ascii');
+	var chara = $('#char');
+	ascii.value = chara.value.charCodeAt(0);
+}
+</script>
+<h1><button onclick="window.history.back();">&larr;</button> Cara Bermain</h1>
+Pilih salah satu pilihan kode ASCII dari karakter yang ditampilkan*.<br> 
+Jika jawaban benar, nilai bertambah.<br> 
+Namun jika jawaban salah, nyawamu berkurang.<br /><br />
+<h6>*Kode karakter huruf kecil dengan huruf kapital berbeda</h6>
+<h1>Generator Kode ASCII</h1>
+Ingin mengenal kode ASCII? 
+<br />Anda bisa gunakan <a href="javascript: showDialog('1'); loadASCIIGen();">Generator Kode ASCII</a>
+<div class="dialogBg" id="dialogBg1"></div>
+<div class="dialog" id="dialog1">
+	<div class="dialogHead">
+		Char to ASCII
+		<div class="exitDlg" onclick="exitDlg('1');">&times;</div>
+	</div>
+	<div class="dialogBody" id="dialogBody1">
+		<input type="text" id="char" maxlength=1 placeholder="Ketik satu huruf/angka saja" />
+		<input type="button" value="Convert" onclick="charToAscii();" /><br /><br>
+		<input type="text" id="ascii" placeholder="Kode ASCII" readonly />
+		<input type="button" onclick="$('#ascii').select(); document.execCommand('copy');" value="Copy" />
+	</div>
+</div>
+</body>
+</html>

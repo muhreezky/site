@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ASCII Quiz</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/dialog.css">
+<script type="text/javascript" src="js/main.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=0" />
+</head>
+<body>
+<style type="text/css">
+fieldset{
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+}
+</style>
+<table style='background-color: #FFFFFF;'>
+<td width="33%">
+Life x <span id="lifeBar">3</span>
+</td>
+
+<td width="33%">
+Time = <span id="timeBar">5</span>
+</td>
+
+<td width="33%">
+Score = <span id="scoreBar">0</span>
+</td>
+</table><br />
+<fieldset>
+Kode ASCII dari <input type="button" value="" id="charBar" readonly /><br /><br />
+<table class="choices">
+<tr>
+
+<td width="25%">
+<input type="button" id="choice1" onclick="correct(this.value);" />
+</td>
+
+<td width="25%">
+<input type="button" id="choice2" onclick="correct(this.value);" />
+</td>
+
+<td width="25%">
+<input type="button" id="choice3" onclick="correct(this.value);" />
+</td>
+
+<td width="25%">
+<input type="button" id="choice4" onclick="correct(this.value);" />
+</td>
+
+</tr>
+</table>
+</fieldset>
+<br>
+<script> 
+window.onload = function(){
+	loadQuestion();
+};
+</script>
+<div class="dialogBg" id="dialogBg1"></div>
+<div class="dialog" id="dialog1">
+	<div class="dialogHead">
+		Game Over
+	</div>
+	<div class="dialogBody">
+		 Score = <span id="myScore"></span>&nbsp;&nbsp; <span id="showIfHiScore">New High Score!!!</span><br>
+		 High Score = <span id="myHighScore"></span><br /><br />
+		 <input type="button" value="Retry" onclick='document.location.reload();' />&nbsp;<input type="button" value="Main Menu" onclick='document.location.href = "./index.html";' />
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CharLogy Challenge</title>
+<script type='text/javascript' src='js/main.js'></script>
+<link rel='stylesheet' href='css/main.css'>
+<link rel="icon" type="image/png" href="./icon.png" />
+<link rel="stylesheet" href="css/fork-awesome.min.css">
+<meta charset='UTF-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+</head>
+<body>
+<div class="titlebar">
+<img id="appLogo" src="./icon.png" alt="ASCII Quiz">
+</div><br />
+<button class="mainmenu button" onclick='document.location.href = "./play.html";' ><i class="fa fa-play"></i></button>
+<button class="mainmenu button" onclick='document.location.href = "./help.html";' ><i class="fa fa-question"></i></button>
+<br /><br /><br />
+<h2 style='float: right;'>
+	High Score = <span id="myHighScore"></span>
+</h2>
+<script>
+  if(getHiScore() == null){
+    setHiScore(0);
+  }
+  else{
+  	
+  }
+  $("#myHighScore").textContent = getHiScore();
+</script>
+</body>
+</html>
