@@ -1,6 +1,7 @@
 <script>
 	import { ModeWatcher } from 'mode-watcher';
 import '../app.css';
+	import Navbar from '$lib/components/elements/navbar.svelte';
 </script>
 
 <svelte:head>
@@ -8,4 +9,9 @@ import '../app.css';
 </svelte:head>
 
 <ModeWatcher />
-<slot />
+<header>
+	<Navbar />
+</header>
+<main class="px-5 py-3">
+	<slot />
+</main>
