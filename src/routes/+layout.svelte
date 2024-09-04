@@ -12,6 +12,6 @@ import '../app.css';
 <header>
 	<Navbar />
 </header>
-<main class="px-5 py-3">
+<main class="px-2 lg:px-5 py-3">
 	<slot />
 </main>
