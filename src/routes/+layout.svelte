@@ -1,6 +1,6 @@
 <script>
 	import { ModeWatcher } from 'mode-watcher';
-import '../app.css';
+	import '../app.css';
 	import Navbar from '$lib/components/elements/navbar.svelte';
 </script>
 
@@ -12,6 +12,6 @@ import '../app.css';
 <header>
 	<Navbar />
 </header>
-<main class="px-2 lg:px-5 py-3">
+<main class="px-2 py-3 lg:px-5">
 	<slot />
 </main>

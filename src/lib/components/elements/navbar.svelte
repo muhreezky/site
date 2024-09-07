@@ -5,9 +5,8 @@
 	import ThemeToggle from './theme-toggle.svelte';
 	const links = [
 		{ url: '/', label: 'Home' },
-		{ url: '/about', label: 'About' },
 		{ url: '/projects', label: 'Projects' },
-		{ url: '/connect', label: 'Contact' }
+		{ url: '/contact', label: 'Contact' }
 	];
 	let innerWidth: number;
 	let innerHeight: number;
@@ -20,7 +19,6 @@
 	</a>
 	{#if innerWidth >= 768}
 		<ul class="flex list-none gap-2">
-			<ThemeToggle />
 			{#each links as { url: href, label }}
 				<li>
 					<a
@@ -31,6 +29,7 @@
 					</a>
 				</li>
 			{/each}
+			<ThemeToggle />
 		</ul>
 	{:else}
 		<Navsheet {links} />
