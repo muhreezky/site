@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
+	import { enhance } from '$app/forms';
 	import { Button } from '$lib/components/ui/button';
-import {
+	import {
 		Card,
 		CardContent,
 		CardDescription,
@@ -10,8 +11,8 @@ import {
 	} from '$lib/components/ui/card';
 	import { Input } from '$lib/components/ui/input';
 	import { Textarea } from '$lib/components/ui/textarea';
-
-	const fields = [
+	type Fields = { id: string, label: string, placeholder: string, type?: string };
+	const [name1, name2, ...fields]: Fields[] = [
 		{ id: 'firstname', label: 'First Name', placeholder: 'Write your first name (ex: John)' },
 		{ id: 'lastname', label: 'Last Name', placeholder: 'Write your last name (ex: Doe)' },
 		{ id: 'company', label: 'Company', placeholder: 'The place where you work (ex: ACME Corp)' },
@@ -31,7 +32,7 @@ import {
 </script>
 
 <Card>
-	<form method="post">
+	<form method="post" use:enhance>
 		<CardHeader>
 			<CardTitle tag="h1" class="text-lg">Let's Step Closer</CardTitle>
 			<CardDescription>
@@ -39,6 +40,18 @@ import {
 			</CardDescription>
 		</CardHeader>
 		<CardContent class="flex flex-col gap-3">
+			<div class="grid grid-cols-2 gap-3">
+				{#each [name1, name2] as name}
+					<div class="flex flex-col gap-1">
+						<label for={name.id}>{name.label}</label>
+						{#if name.type === 'textarea'}
+							<Textarea name={name.id} id={name.id} placeholder={name.placeholder} />
+						{:else}
+							<Input name={name.id} id={name.id} placeholder={name.placeholder} />
+						{/if}
+					</div>
+				{/each}
+			</div>
 			{#each fields as field}
 				<div class="flex flex-col gap-1">
 					<label for={field.id}>{field.label}</label>
@@ -50,8 +63,8 @@ import {
 				</div>
 			{/each}
 		</CardContent>
-    <CardFooter>
-      <Button type="submit" class="w-full">Send</Button>
-    </CardFooter>
+		<CardFooter>
+			<Button type="submit" class="w-full">Send</Button>
+		</CardFooter>
 	</form>
 </Card>
