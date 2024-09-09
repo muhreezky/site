@@ -1,7 +1,7 @@
-import { drizzle } from 'drizzle-orm/libsql';
-import { createClient } from '@libsql/client';
-import { TURSO_AUTH_TOKEN as authToken, TURSO_DATABASE_URL as url } from '$env/static/private';
+import { drizzle } from 'drizzle-orm/tidb-serverless';
+import { DATABASE_URL as url } from '$env/static/private';
+import { connect } from '@tidbcloud/serverless';
 
-export const turso = createClient({ url, authToken });
+export const client = connect({ url })
 
-export const db = drizzle(turso);
+export const db = drizzle(client);

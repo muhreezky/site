@@ -1,19 +1,12 @@
 {
   "version": "7",
-  "dialect": "sqlite",
+  "dialect": "mysql",
   "entries": [
     {
       "idx": 0,
-      "version": "6",
-      "when": 1725804393517,
-      "tag": "0000_fantastic_lorna_dane",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1725807089294,
-      "tag": "0001_nice_marrow",
+      "version": "5",
+      "when": 1725894286174,
+      "tag": "0000_tough_sentry",
       "breakpoints": true
     }
   ]

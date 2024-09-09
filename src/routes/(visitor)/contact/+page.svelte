@@ -11,24 +11,8 @@
 	} from '$lib/components/ui/card';
 	import { Input } from '$lib/components/ui/input';
 	import { Textarea } from '$lib/components/ui/textarea';
-	type Fields = { id: string, label: string, placeholder: string, type?: string };
-	const [name1, name2, ...fields]: Fields[] = [
-		{ id: 'firstname', label: 'First Name', placeholder: 'Write your first name (ex: John)' },
-		{ id: 'lastname', label: 'Last Name', placeholder: 'Write your last name (ex: Doe)' },
-		{ id: 'company', label: 'Company', placeholder: 'The place where you work (ex: ACME Corp)' },
-		{
-			id: 'email',
-			label: 'E-mail',
-			placeholder: 'Your valid e-mail address (ex: mail@domain.com)'
-		},
-		{ id: 'phone', label: 'Phone', placeholder: 'Your active phone number (ex: +6281234567890)' },
-		{
-			id: 'message',
-			label: 'Message',
-			placeholder: 'Tell anything about your brilliant ideas, let me help to make them come true',
-			type: 'textarea'
-		}
-	];
+	import { fields, name1, name2 } from './fields';
+
 </script>
 
 <Card>
@@ -45,9 +29,19 @@
 					<div class="flex flex-col gap-1">
 						<label for={name.id}>{name.label}</label>
 						{#if name.type === 'textarea'}
-							<Textarea name={name.id} id={name.id} placeholder={name.placeholder} />
+							<Textarea
+								required={!name.optional}
+								name={name.id}
+								id={name.id}
+								placeholder={name.placeholder}
+							/>
 						{:else}
-							<Input name={name.id} id={name.id} placeholder={name.placeholder} />
+							<Input
+								name={name.id}
+								id={name.id}
+								placeholder={name.placeholder}
+								required={!name.optional}
+							/>
 						{/if}
 					</div>
 				{/each}
@@ -56,9 +50,19 @@
 				<div class="flex flex-col gap-1">
 					<label for={field.id}>{field.label}</label>
 					{#if field.type === 'textarea'}
-						<Textarea name={field.id} id={field.id} placeholder={field.placeholder} />
+						<Textarea
+							required={!field.optional}
+							name={field.id}
+							id={field.id}
+							placeholder={field.placeholder}
+						/>
 					{:else}
-						<Input name={field.id} id={field.id} placeholder={field.placeholder} />
+						<Input
+							required={!field.optional}
+							name={field.id}
+							id={field.id}
+							placeholder={field.placeholder}
+						/>
 					{/if}
 				</div>
 			{/each}

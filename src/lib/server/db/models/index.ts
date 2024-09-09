@@ -1,14 +1,14 @@
 import { sql } from "drizzle-orm";
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { int, mysqlTable, varchar, text, datetime } from "drizzle-orm/mysql-core";
 
-export const messages = sqliteTable('messages', {
+export const messages = mysqlTable('messages', {
   id: int('id').primaryKey(),
-  fullname: text('fullname').notNull(),
+  fullname: varchar('fullname', { length: 100 }).notNull(),
   text: text('message').notNull(),
-  company: text('company').notNull(),
-  phone: text('phone').notNull(),
-  email: text('email').notNull(),
-  createdAt: int('created_at').notNull().default(sql`(CAST (unixepoch() as int))`)
+  company: varchar('company', {length: 100}).notNull(),
+  phone: varchar('phone', { length: 25 }).notNull(),
+  email: varchar('email', { length: 120 }).notNull(),
+  createdAt: datetime('created_at').notNull().default(sql`current_timestamp`)
 });
 
 export type createMessages = typeof messages.$inferInsert;

@@ -1,6 +1,6 @@
 import { db } from '$lib/server/db/drizzle';
 import 'dotenv/config';
-import { migrate } from 'drizzle-orm/libsql/migrator';
+import { migrate } from 'drizzle-orm/tidb-serverless/migrator';
 
 async function main() {
   try {
