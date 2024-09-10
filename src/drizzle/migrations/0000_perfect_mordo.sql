@@ -1,5 +1,5 @@
 CREATE TABLE `messages` (
-	`id` int NOT NULL,
+	`id` int unsigned AUTO_INCREMENT NOT NULL,
 	`fullname` varchar(100) NOT NULL,
 	`message` text NOT NULL,
 	`company` varchar(100) NOT NULL,

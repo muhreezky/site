@@ -16,28 +16,34 @@ const schema = zfd.formData({
 
 export const actions: Actions = {
 	async default(event) {
-		const { data, success, error } = schema.safeParse(await event.request.formData());
-		if (!success) {
-			return fail(400, {
-				errors: error?.flatten()?.fieldErrors,
-				message: error.message,
-				status: 400
+		try {
+
+			const { data, success, error } = schema.safeParse(await event.request.formData());
+			if (!success) {
+				console.log(error.message);
+				return fail(400, {
+					errors: error?.flatten()?.fieldErrors,
+					message: error.message,
+					status: 400
+				});
+			}
+			const { firstname, lastname } = data;
+			const fullname = `${firstname.trim()} ${lastname?.trim()}`.trim();
+			await db.insert(messages).values({
+				fullname, 
+				company: data.company,
+				email: data.email,
+				phone: data.phone,
+				text: data.message,
 			});
+			return {
+				errors: [],
+				message: 'Success',
+				status: 201,
+				data,
+			};
+		} catch (e: unknown) {
+			console.log('Error Occured', e);
 		}
-		const { firstname, lastname } = data;
-		const fullname = `${firstname.trim()} ${lastname?.trim()}`.trim();
-		await db.insert(messages).values({
-			fullname, 
-			company: data.company,
-			email: data.email,
-			phone: data.phone,
-			text: data.message,
-		});
-		return {
-			errors: [],
-			message: 'Success',
-			status: 201,
-			data,
-		};
 	}
 };

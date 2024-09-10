@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "56abd3e8-c514-4237-8f1b-25c22c952623",
+  "id": "6e74be16-f9f5-40c0-b8ba-ff0ce10f062f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "messages": {
@@ -9,10 +9,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "int unsigned",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
+          "autoincrement": true
         },
         "fullname": {
           "name": "fullname",
