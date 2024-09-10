@@ -1,14 +1,11 @@
-import { drizzle as tidb } from 'drizzle-orm/tidb-serverless';
-import { drizzle as mysql } from 'drizzle-orm/mysql2';
-import { connect } from '@tidbcloud/serverless';
+import { drizzle } from 'drizzle-orm/libsql';
 import {
-	DB_URL as url
+	DB_URL as url,
+	DB_TOKEN,
 } from '$env/static/private';
-import { createConnection } from 'mysql2';
 import 'dotenv/config';
+import { createClient } from '@libsql/client';
+import { dev } from '$app/environment';
 
-const dev = process.env.NODE_ENV === 'development';
-export const client = dev ? createConnection(url) : connect({ url });
-const localClient = createConnection(url);
-const tidbClient = connect({ url });
-export const db = dev ? mysql(localClient) : tidb(tidbClient);
+export const client = createClient({ url, authToken: dev ? undefined : DB_TOKEN });
+export const db = drizzle(client);

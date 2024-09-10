@@ -1,16 +1,16 @@
-import { sql } from 'drizzle-orm';
-import { int, mysqlTable, varchar, text, datetime } from 'drizzle-orm/mysql-core';
+// import { sql } from 'drizzle-orm';
+import { sqliteTable, int, text } from 'drizzle-orm/sqlite-core';
 
-export const messages = mysqlTable('messages', {
-	id: int('id', { unsigned: true }).primaryKey().autoincrement(),
-	fullname: varchar('fullname', { length: 100 }).notNull(),
-	text: text('message').notNull(),
-	company: varchar('company', { length: 100 }).notNull(),
-	phone: varchar('phone', { length: 25 }).notNull(),
-	email: varchar('email', { length: 120 }).notNull(),
-	createdAt: datetime('created_at')
+export const messages = sqliteTable('messages', {
+	id: int('id').primaryKey(),
+	fullname: text('fullname', { length: 100 }).notNull(),
+	content: text('content').notNull(),
+	company: text('company', { length: 100 }).notNull(),
+	phone: text('phone', { length: 25 }).notNull(),
+	email: text('email', { length: 120 }).notNull(),
+	createdAt: int('created_at')
 		.notNull()
-		.default(sql`current_timestamp`)
+		.$defaultFn(() => Date.now())
 });
 
 export type createMessages = typeof messages.$inferInsert;

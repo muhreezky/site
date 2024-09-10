@@ -34,7 +34,7 @@ export const actions: Actions = {
 				company: data.company,
 				email: data.email,
 				phone: data.phone,
-				text: data.message,
+				content: data.message,
 			});
 			return {
 				errors: [],

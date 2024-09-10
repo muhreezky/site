@@ -1,7 +1,7 @@
 {
-  "version": "5",
-  "dialect": "mysql",
-  "id": "6e74be16-f9f5-40c0-b8ba-ff0ce10f062f",
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "039ac86e-14e3-4ea3-b84e-50ed87579bcd",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "messages": {
@@ -9,20 +9,20 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "int unsigned",
-          "primaryKey": false,
+          "type": "integer",
+          "primaryKey": true,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "fullname": {
           "name": "fullname",
-          "type": "varchar(100)",
+          "type": "text(100)",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "message": {
-          "name": "message",
+        "content": {
+          "name": "content",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -30,54 +30,46 @@
         },
         "company": {
           "name": "company",
-          "type": "varchar(100)",
+          "type": "text(100)",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
         "phone": {
           "name": "phone",
-          "type": "varchar(25)",
+          "type": "text(25)",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
         "email": {
           "name": "email",
-          "type": "varchar(120)",
+          "type": "text(120)",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
         "created_at": {
           "name": "created_at",
-          "type": "datetime",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "current_timestamp"
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {
-        "messages_id": {
-          "name": "messages_id",
-          "columns": [
-            "id"
-          ]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
   },
+  "enums": {},
   "_meta": {
     "schemas": {},
     "tables": {},
     "columns": {}
   },
   "internal": {
-    "tables": {},
     "indexes": {}
   }
 }
