@@ -12,5 +12,6 @@ export const messages = sqliteTable('messages', {
 		.notNull()
 		.$defaultFn(() => Date.now())
 });
-
 export type createMessages = typeof messages.$inferInsert;
+
+export * from './project';
