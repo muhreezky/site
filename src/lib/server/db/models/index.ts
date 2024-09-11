@@ -15,3 +15,4 @@ export type InsertMessage = typeof messagesTable.$inferInsert;
 
 export * from './project';
 export * from './stack';
+export * from './user';

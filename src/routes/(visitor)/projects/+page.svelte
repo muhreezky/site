@@ -5,8 +5,8 @@
 <article>
   <Card>
     <CardHeader>
-      <CardTitle tag="h1" class="font-bold text-2xl">My Projects</CardTitle>
-      <CardDescription class="text-lg">Here are some projects I'm working on</CardDescription>
+      <CardTitle tag="h1">My Projects</CardTitle>
+      <CardDescription>Here are some projects I'm working on</CardDescription>
     </CardHeader>
     <CardContent>
       
