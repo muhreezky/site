@@ -3,7 +3,7 @@ import type { Actions } from './$types';
 import { zfd } from 'zod-form-data';
 import { fail } from '@sveltejs/kit';
 import { db } from '$lib/server/db/drizzle';
-import { messages } from '$lib/server/db/models';
+import { messagesTable } from '$lib/server/db/models';
 
 const schema = zfd.formData({
 	firstname: zfd.text(z.string().min(1, 'You have to fill your first name')),
@@ -29,7 +29,7 @@ export const actions: Actions = {
 			}
 			const { firstname, lastname } = data;
 			const fullname = `${firstname.trim()} ${lastname?.trim()}`.trim();
-			await db.insert(messages).values({
+			await db.insert(messagesTable).values({
 				fullname, 
 				company: data.company,
 				email: data.email,

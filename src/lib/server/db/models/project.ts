@@ -1,4 +1,3 @@
-import { sql } from 'drizzle-orm';
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const projects = sqliteTable('projects', {
@@ -11,9 +10,8 @@ export const projects = sqliteTable('projects', {
 	platform: text('platform', { enum: ['Desktop', 'Mobile', 'Website'] })
 		.default('Website')
 		.notNull(),
-	createdAt: int('created_at').default(sql`(CURRENT_TIMESTAMP)`),
-	updatedAt: int('updated_at')
-		.default(sql`(CURRENT_TIMESTAMP)`)
-		.$onUpdateFn(() => Date.now())
+	createdAt: int('created_at', { mode: 'timestamp' }).$default(() => new Date()),
+	updatedAt: int('updated_at', { mode: 'timestamp' })
+		.$onUpdateFn(() => new Date())
 });
 export type InsertProject = typeof projects.$inferInsert;
