@@ -6,13 +6,11 @@ import { eq } from 'drizzle-orm';
 
 export const handle: Handle = async function ({ event, resolve }) {
 	const cookie = event.cookies.get('sessionToken');
-	console.log(cookie);
 	if (cookie) {
 		const query = await db.query.sessions.findFirst({
 			where: eq(sessions.id, cookie),
 			with: { user: true }
 		});
-    console.log('query',query)
 		const expired = new Date().getDate() > (query?.expiredAt?.getDate() || 0);
 		event.locals.session =
 			!expired && query ? { token: query.id, expiredAt: query.expiredAt } : undefined;
