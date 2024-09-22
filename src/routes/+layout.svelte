@@ -2,6 +2,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import '../app.css';
 	import Navbar from '$lib/components/elements/navbar.svelte';
+	import { Toaster } from '$lib/components/ui/sonner';
 </script>
 
 <svelte:head>
@@ -9,6 +10,7 @@
 </svelte:head>
 
 <ModeWatcher />
+<Toaster closeButton richColors />
 <header>
 	<Navbar />
 </header>

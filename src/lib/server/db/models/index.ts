@@ -1,6 +1,6 @@
 import { sqliteTable, int, text } from 'drizzle-orm/sqlite-core';
 
-export const messagesTable = sqliteTable('messages', {
+export const messages = sqliteTable('messages', {
 	id: int('id').primaryKey(),
 	fullname: text('fullname', { length: 100 }).notNull(),
 	content: text('content').notNull(),
@@ -11,7 +11,7 @@ export const messagesTable = sqliteTable('messages', {
 		.notNull()
 		.$default(() => new Date())
 });
-export type InsertMessage = typeof messagesTable.$inferInsert;
+export type InsertMessage = typeof messages.$inferInsert;
 
 export * from './project';
 export * from './stack';

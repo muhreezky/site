@@ -1,7 +1,7 @@
 import { sql } from 'drizzle-orm';
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-export const stacksTable = sqliteTable('stacks', {
+export const stacks = sqliteTable('stacks', {
 	id: int('id').notNull().primaryKey(),
 	name: text('name').notNull(),
 	icon: text('icon').notNull(),
@@ -11,4 +11,4 @@ export const stacksTable = sqliteTable('stacks', {
 		.$onUpdateFn(() => new Date())
 		.default(sql`(current_timestamp)`)
 });
-export type InsertStack = typeof stacksTable.$inferInsert;
+export type InsertStack = typeof stacks.$inferInsert;

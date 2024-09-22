@@ -30,6 +30,11 @@
 						</a>
 					</li>
 				{/each}
+				<li>
+					<a href="/dashboard" class={buttonVariants({ variant: 'info', class: 'w-full' })}>
+						Dashboard
+					</a>
+				</li>
 			</ul>
 		</div>
     <SheetFooter>

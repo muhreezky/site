@@ -15,6 +15,13 @@
       "when": 1726066440418,
       "tag": "0001_late_marten_broadcloak",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1726969724699,
+      "tag": "0002_damp_princess_powerful",
+      "breakpoints": true
     }
   ]
 }

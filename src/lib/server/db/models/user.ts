@@ -1,7 +1,7 @@
-import { sql } from 'drizzle-orm';
+import { relations, sql } from 'drizzle-orm';
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-export const usersTable = sqliteTable('users', {
+export const users = sqliteTable('users', {
 	id: int('id').notNull().primaryKey(),
 	email: text('email').notNull().unique(),
 	password: text('password').notNull(),
@@ -11,3 +11,26 @@ export const usersTable = sqliteTable('users', {
     .default(sql`(current_timestamp)`)
 		.$onUpdate(() => new Date())
 });
+
+export function generateSessionKey(): string {
+  // Generate 32 random bytes (256 bits)
+  const array = new Uint8Array(32);
+  crypto.getRandomValues(array);
+  return Array.from(array).map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+export const sessions = sqliteTable('sessions', {
+	id: text('id').notNull().primaryKey().$defaultFn(() => generateSessionKey()),
+	userId: int('user_id').notNull(),
+	expiredAt: int('expired_at', { mode: 'timestamp' })
+		.default(sql`(current_timestamp)`)
+		.notNull()
+});
+
+export const usersRelations = relations(users, ({ many }) => ({
+	sessions: many(sessions)
+}));
+
+export const sessionsRelations = relations(sessions, ({ one }) => ({
+	user: one(users, { fields: [sessions.userId], references: [users.id] })
+}));

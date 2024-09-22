@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -20,6 +20,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^9.6.0",
+		"@types/uuid": "^10.0.0",
 		"autoprefixer": "^10.4.20",
 		"dotenv": "^16.4.5",
 		"drizzle-kit": "^0.24.2",
@@ -42,13 +43,16 @@
 	"type": "module",
 	"dependencies": {
 		"@libsql/client": "^0.10.0",
+		"bcrypt-ts": "^5.0.2",
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"drizzle-orm": "^0.33.0",
 		"mode-watcher": "^0.4.1",
 		"svelte-radix": "^1.1.1",
+		"svelte-sonner": "^0.3.28",
 		"tailwind-merge": "^2.5.2",
 		"tailwind-variants": "^0.2.1",
+		"uuid": "^10.0.0",
 		"zod": "^3.23.8",
 		"zod-form-data": "^2.0.2"
 	}
