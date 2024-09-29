@@ -5,22 +5,21 @@ import { redirect, type Handle } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 
 export const handle: Handle = async function ({ event, resolve }) {
-	const cookie = event.cookies.get('sessionToken');
-	if (cookie) {
+	event.locals.token = event.cookies.get('sessionToken');
+	if (event.locals.token) {
 		const query = await db.query.sessions.findFirst({
-			where: eq(sessions.id, cookie),
+			where: eq(sessions.id, event.locals.token),
 			with: { user: true }
 		});
-		const expired = new Date().getDate() > (query?.expiredAt?.getDate() || 0);
-		event.locals.session =
-			!expired && query ? { token: query.id, expiredAt: query.expiredAt } : undefined;
+		const expired = new Date().getTime() > (query?.expiredAt?.getTime() || 0);
+		event.locals.token = !expired && query ? query.id : undefined;
 		event.locals.user =
-			!expired && query ? { id: query.user.id, email: query.user.email } : undefined;
+			query && !expired ? { id: query.user.id, email: query.user.email } : undefined;
 		await db.update(sessions).set({ expiredAt: afterToday(7) });
 	}
-	if (!event.locals.user && cookie) {
+	if (!event.locals.user && event.locals.token) {
 		event.cookies.delete('sessionToken', { path: '/' });
-		await db.delete(sessions).where(eq(sessions.id, cookie));
+		await db.delete(sessions).where(eq(sessions.id, event.locals.token));
 	}
 	if (!event.locals.user && event.url.pathname.startsWith('/dashboard')) {
 		return redirect(302, '/login');

@@ -8,10 +8,7 @@ declare global {
 				id: number;
 				email: string;
 			}
-			session?: {
-				token: string;
-				expiredAt: Date;
-			}
+			token?: string;
 		}
 		// interface PageData {}
 		// interface PageState {}

@@ -52,10 +52,7 @@ export const actions: Actions = {
 			httpOnly: true,
 			secure: import.meta.env.PROD
 		});
-		event.locals.session = {
-			token: session.id,
-			expiredAt: session.expiredAt as Date
-		};
+		event.locals.token = session.id;
 		event.locals.user = { id: result.id, email: result.email };
 		return redirect(302, '/dashboard');
 	}

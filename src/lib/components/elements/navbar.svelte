@@ -6,7 +6,7 @@
 	const links = [
 		{ url: '/', label: 'Home' },
 		{ url: '/projects', label: 'Projects' },
-		{ url: '/contact', label: 'Contact' },
+		{ url: '/contact', label: 'Contact' }
 	];
 	let innerWidth: number;
 	let innerHeight: number;
@@ -29,9 +29,13 @@
 					</a>
 				</li>
 			{/each}
-			{#if $page.data.session}
+			{#if $page.data.token}
 				<li>
-					<a href="/dashboard" class={buttonVariants({ variant: 'outline' })}>Dashboard</a>
+					<a
+						href="/dashboard"
+						class={buttonVariants({ variant: $page.url.pathname === '/dashboard' ? 'default' : 'outline' })}
+						>Dashboard</a
+					>
 				</li>
 			{/if}
 			<ThemeToggle />
