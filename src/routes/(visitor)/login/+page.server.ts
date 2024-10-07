@@ -59,7 +59,7 @@ export const actions: Actions = {
 };
 
 export async function load(event: PageServerLoadEvent) {
-	if (event.locals.user) {
+	if (event.locals.user || event.locals.token) {
 		return redirect(302, '/dashboard');
 	}
 }

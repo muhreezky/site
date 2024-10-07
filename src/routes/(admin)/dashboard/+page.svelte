@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 	import CountCard from '$lib/components/elements/count-card.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
@@ -26,7 +27,7 @@
 			<div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
 				{#each counts as [key, title]}
 					{@const count = data.counts[key]}
-					<CountCard {count} {title} />
+					<CountCard on:click={() => goto(`/dashboard/${key}`)} {count} {title} />
 				{/each}
 			</div>
 		</CardContent>

@@ -6,7 +6,7 @@ import { eq } from 'drizzle-orm';
 
 export const handle: Handle = async function ({ event, resolve }) {
 	event.locals.token = event.cookies.get('sessionToken');
-	if (event.locals.token) {
+	if (event.locals.token && !event.locals.refreshed) {
 		const query = await db.query.sessions.findFirst({
 			where: eq(sessions.id, event.locals.token),
 			with: { user: true }
@@ -16,6 +16,7 @@ export const handle: Handle = async function ({ event, resolve }) {
 		event.locals.user =
 			query && !expired ? { id: query.user.id, email: query.user.email } : undefined;
 		await db.update(sessions).set({ expiredAt: afterToday(7) });
+		event.locals.refreshed = !!event.locals.token;
 	}
 	if (!event.locals.user && event.locals.token) {
 		event.cookies.delete('sessionToken', { path: '/' });
