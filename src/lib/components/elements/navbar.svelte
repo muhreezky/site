@@ -23,7 +23,12 @@
 				<li>
 					<a
 						{href}
-						class={buttonVariants({ variant: href === $page.url.pathname ? 'default' : 'ghost' })}
+						class={buttonVariants({
+							variant:
+								(href.length > 1 && $page.url.pathname.startsWith(href)) || $page.url.pathname === href
+									? 'default'
+									: 'ghost'
+						})}
 					>
 						{label}
 					</a>
@@ -33,8 +38,9 @@
 				<li>
 					<a
 						href="/dashboard"
-						class={buttonVariants({ variant: $page.url.pathname === '/dashboard' ? 'default' : 'outline' })}
-						>Dashboard</a
+						class={buttonVariants({
+							variant: $page.url.pathname.startsWith('/dashboard') ? 'default' : 'outline'
+						})}>Dashboard</a
 					>
 				</li>
 			{/if}
