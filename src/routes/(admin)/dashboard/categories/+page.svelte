@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
 	import {
 		Card,
 		CardContent,
@@ -7,6 +6,12 @@
 		CardHeader,
 		CardTitle
 	} from '$lib/components/ui/card';
+	import * as Table from '$lib/components/ui/table';
+	import dayjs from 'dayjs';
+	import type { PageData } from './$types';
+	import Create from './create.svelte';
+	export let data: PageData;
+	const heads = ['No','Name','Created at', 'Updated at', 'Action'];
 </script>
 
 <Card>
@@ -14,9 +19,29 @@
 		<CardTitle>Project Categories</CardTitle>
 		<CardDescription>Add or edit categories for your project</CardDescription>
 	</CardHeader>
-	<CardContent>
+	<CardContent class="flex flex-col gap-4">
 		<div class="flex justify-end gap-3">
-			<Button type="button">+ New</Button>
+			<Create />
 		</div>
+		<Table.Root>
+			<Table.Header>
+				<Table.Row>
+					{#each heads as head,i}
+						<Table.Head class={i === 0 ? 'text-center':''}>{head}</Table.Head>
+					{/each}
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				{#each data.categories as category,i}
+					<Table.Row>
+						<Table.Cell class="text-center">{i+1}</Table.Cell>
+						<Table.Cell>{category.name}</Table.Cell>
+						<Table.Cell>{category.createdAt?.getDate()}</Table.Cell>
+						<Table.Cell>{dayjs(category.updatedAt?.getDate()).format('DD/MM/YYYY H:m:s')}</Table.Cell>
+						<Table.Cell><Create {category} /></Table.Cell>
+					</Table.Row>
+				{/each}
+			</Table.Body>
+		</Table.Root>
 	</CardContent>
 </Card>

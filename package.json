@@ -46,6 +46,7 @@
 		"bcrypt-ts": "^5.0.2",
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
+		"dayjs": "^1.11.13",
 		"drizzle-orm": "^0.33.0",
 		"mode-watcher": "^0.4.1",
 		"svelte-radix": "^1.1.1",

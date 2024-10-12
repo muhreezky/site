@@ -18,6 +18,7 @@ export const projects = sqliteTable('projects', {
 		.default(sql`(current_timestamp)`)
 });
 export type InsertProject = typeof projects.$inferInsert;
+export type Project = typeof projects.$inferSelect;
 
 export const categories = sqliteTable('categories', {
 	id: int('id').primaryKey(),
@@ -27,7 +28,8 @@ export const categories = sqliteTable('categories', {
 		.$onUpdate(() => new Date())
 		.default(sql`(current_timestamp)`)
 });
-export type InsertCategory = typeof projects.$inferInsert;
+export type InsertCategory = typeof categories.$inferInsert;
+export type Category = typeof categories.$inferSelect;
 
 export const projectRelations = relations(projects, ({one}) => ({
 	category: one(categories, {
