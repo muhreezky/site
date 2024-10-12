@@ -10,6 +10,7 @@
 	import type { PageData } from './$types';
 	import Create from './create.svelte';
 	import { formatDate } from '$lib/date';
+	import Remove from './remove.svelte';
 	export let data: PageData;
 	const heads = ['No','Name','Created at', 'Updated at', 'Action'];
 </script>
@@ -38,7 +39,10 @@
 						<Table.Cell>{category.name}</Table.Cell>
 						<Table.Cell>{formatDate(category.createdAt)}</Table.Cell>
 						<Table.Cell>{formatDate(category.updatedAt)}</Table.Cell>
-						<Table.Cell><Create {category} /></Table.Cell>
+						<Table.Cell class="flex gap-2">
+							<Create {category} />
+							<Remove {category} />
+						</Table.Cell>
 					</Table.Row>
 				{/each}
 			</Table.Body>

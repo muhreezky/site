@@ -28,12 +28,21 @@ export const actions: Actions = {
 			const updated = await db.update(categories).set(data).where(eq(categories.id, data.id));
 			return updated.rowsAffected
 				? { message: 'Category Updated' }
-				: fail(409, { message: 'Could not update category' });
+				: fail(400, { message: 'Could not update category' });
 		}
 		const inserted = await db.insert(categories).values(data).returning();
 		if (!inserted.length) {
-			return fail(409, { message: 'Could not insert category' });
+			return fail(400, { message: 'Could not insert category' });
 		}
 		return { message: 'Category Inserted' };
-	}
+	},
+  async remove(event) {
+    const form = await event.request.formData();
+    const id = Number(form.get('id'));
+    const deleted = await db.delete(categories).where(eq(categories.id, id));
+    if (!deleted.rowsAffected) {
+      return fail(400, { message: 'Could not delete category' });
+    }
+    return { message: 'Category Deleted' };
+  }
 };

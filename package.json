@@ -42,6 +42,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@aws-sdk/client-s3": "^3.670.0",
 		"@libsql/client": "^0.10.0",
 		"bcrypt-ts": "^5.0.2",
 		"bits-ui": "^0.21.13",

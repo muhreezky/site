@@ -22,7 +22,7 @@
 						: 'Create New Category'}</Dialog.Description
 				>
 			</Dialog.Header>
-			<div class="flex flex-col gap-2 rounded-md border p-3">
+			<div class="p-3">
 				<section class="flex flex-col gap-1">
 					<label for="name">Category Title</label>
 					<Input
