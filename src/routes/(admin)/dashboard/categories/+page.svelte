@@ -7,9 +7,9 @@
 		CardTitle
 	} from '$lib/components/ui/card';
 	import * as Table from '$lib/components/ui/table';
-	import dayjs from 'dayjs';
 	import type { PageData } from './$types';
 	import Create from './create.svelte';
+	import { formatDate } from '$lib/date';
 	export let data: PageData;
 	const heads = ['No','Name','Created at', 'Updated at', 'Action'];
 </script>
@@ -36,8 +36,8 @@
 					<Table.Row>
 						<Table.Cell class="text-center">{i+1}</Table.Cell>
 						<Table.Cell>{category.name}</Table.Cell>
-						<Table.Cell>{category.createdAt?.getDate()}</Table.Cell>
-						<Table.Cell>{dayjs(category.updatedAt?.getDate()).format('DD/MM/YYYY H:m:s')}</Table.Cell>
+						<Table.Cell>{formatDate(category.createdAt)}</Table.Cell>
+						<Table.Cell>{formatDate(category.updatedAt)}</Table.Cell>
 						<Table.Cell><Create {category} /></Table.Cell>
 					</Table.Row>
 				{/each}

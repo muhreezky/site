@@ -1,4 +1,4 @@
-import { relations, sql } from 'drizzle-orm';
+import { relations } from 'drizzle-orm';
 import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const projects = sqliteTable('projects', {
@@ -12,10 +12,9 @@ export const projects = sqliteTable('projects', {
 		.default('Website')
 		.notNull(),
 	categoryId: int('category_id'),
-	createdAt: int('created_at', { mode: 'timestamp' }).default(sql`(current_timestamp)`),
-	updatedAt: int('updated_at', { mode: 'timestamp' })
+	createdAt: int('created_at', { mode: 'timestamp_ms' }).$default(() => new Date()),
+	updatedAt: int('updated_at', { mode: 'timestamp_ms' })
 		.$onUpdateFn(() => new Date())
-		.default(sql`(current_timestamp)`)
 });
 export type InsertProject = typeof projects.$inferInsert;
 export type Project = typeof projects.$inferSelect;
@@ -23,10 +22,9 @@ export type Project = typeof projects.$inferSelect;
 export const categories = sqliteTable('categories', {
 	id: int('id').primaryKey(),
 	name: text('name').notNull(),
-	createdAt: int('created_at', { mode: 'timestamp' }).default(sql`(current_timestamp)`),
-	updatedAt: int('updated_at', { mode: 'timestamp' })
+	createdAt: int('created_at', { mode: 'timestamp_ms' }).$default(() => new Date()),
+	updatedAt: int('updated_at', { mode: 'timestamp_ms' })
 		.$onUpdate(() => new Date())
-		.default(sql`(current_timestamp)`)
 });
 export type InsertCategory = typeof categories.$inferInsert;
 export type Category = typeof categories.$inferSelect;
