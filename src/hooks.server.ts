@@ -1,4 +1,3 @@
-import { afterToday } from '$lib/date';
 import { db } from '$lib/server/db/drizzle';
 import { sessions } from '$lib/server/db/models';
 import { redirect, type Handle } from '@sveltejs/kit';
@@ -15,8 +14,6 @@ export const handle: Handle = async function ({ event, resolve }) {
 		event.locals.token = !expired && query ? query.id : undefined;
 		event.locals.user =
 			query && !expired ? { id: query.user.id, email: query.user.email } : undefined;
-		await db.update(sessions).set({ expiredAt: afterToday(7) });
-		event.locals.refreshed = !!event.locals.token;
 	}
 	if (!event.locals.user && event.locals.token) {
 		event.cookies.delete('sessionToken', { path: '/' });
