@@ -12,7 +12,7 @@
 	import { formatDate } from '$lib/date';
 	import Remove from './remove.svelte';
 	export let data: PageData;
-	const heads = ['No','Title','', 'Action'];
+	const heads = ['No','Name','Created at', 'Updated at', 'Action'];
 </script>
 
 <Card>
@@ -33,15 +33,15 @@
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#each data.projects as project,i}
+				{#each data.categories as category,i}
 					<Table.Row>
 						<Table.Cell class="text-center">{i+1}</Table.Cell>
-						<Table.Cell>{project.title}</Table.Cell>
-						<Table.Cell>{formatDate(project.createdAt)}</Table.Cell>
-						<Table.Cell>{formatDate(project.updatedAt)}</Table.Cell>
+						<Table.Cell>{category.name}</Table.Cell>
+						<Table.Cell>{formatDate(category.createdAt)}</Table.Cell>
+						<Table.Cell>{formatDate(category.updatedAt)}</Table.Cell>
 						<Table.Cell class="flex gap-2">
-							<Create {project} />
-							<!-- <Remove {project} /> -->
+							<Create {category} />
+							<Remove {category} />
 						</Table.Cell>
 					</Table.Row>
 				{/each}

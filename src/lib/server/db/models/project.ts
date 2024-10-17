@@ -12,6 +12,8 @@ export const projects = sqliteTable('projects', {
 		.default('Website')
 		.notNull(),
 	categoryId: int('category_id'),
+	url: text('url'),
+	thumbnail: text('thumbnail').notNull(),
 	createdAt: int('created_at', { mode: 'timestamp_ms' }).$default(() => new Date()),
 	updatedAt: int('updated_at', { mode: 'timestamp_ms' })
 		.$onUpdateFn(() => new Date())
