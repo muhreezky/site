@@ -1,30 +1,8 @@
-import { db } from '$lib/server/db/drizzle';
-import { sessions } from '$lib/server/db/models';
-import { redirect, type Handle } from '@sveltejs/kit';
-import { eq } from 'drizzle-orm';
+import { API_TOKEN } from '$env/static/private';
+import { type Handle, type HandleFetch } from '@sveltejs/kit';
 
-export const handle: Handle = async function ({ event, resolve }) {
-	event.locals.token = event.cookies.get('sessionToken');
-	if (event.locals.token && !event.locals.refreshed) {
-		const query = await db.query.sessions.findFirst({
-			where: eq(sessions.id, event.locals.token),
-			with: { user: true }
-		});
-		const expired = new Date().getTime() > (query?.expiredAt?.getTime() || 0);
-		event.locals.token = !expired && query ? query.id : undefined;
-		event.locals.user =
-			query && !expired ? { id: query.user.id, email: query.user.email } : undefined;
-	}
-	if (!event.locals.user && event.locals.token) {
-		event.cookies.delete('sessionToken', { path: '/' });
-		await db.delete(sessions).where(eq(sessions.id, event.locals.token));
-	}
-	if (!event.locals.user && event.url.pathname.startsWith('/dashboard')) {
-		return redirect(302, '/login');
-	}
-	if (event.locals.user && event.url.pathname.startsWith('/login')) {
-		return redirect(302, '/dashboard');
-	}
-	const result = await resolve(event);
-	return result;
+export const handleFetch: HandleFetch = async ({ fetch, request, event }) => {
+  request.headers.set('Accept', 'application/json');
+  request.headers.set('Authorization', `Bearer ${API_TOKEN}`);
+  return fetch(request, { credentials: 'include' });
 };
